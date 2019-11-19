@@ -1,6 +1,6 @@
 class WhatsAppController {
   constructor() {
-    console.log('WhatsAppController OK');
+    // console.log('WhatsAppController OK');
     this.elementsPrototype();
     this.loadElements();
     this.initEvents();
@@ -143,28 +143,96 @@ class WhatsAppController {
     });
 
     this.el.inputPhoto.on('change', (e) => {
-      console.log(this.el.inputPhoto.files);
       [...this.el.inputPhoto.files].forEach((file) => {
-        console.log('VScode', file);
+        console.log(file);
       });
     });
 
     this.el.btnAttachCamera.on('click', (e) => {
-      this.el.menuAttach.addClass('open');
+      this.closeAllMainPanel();
+      this.el.panelCamera.addClass('open');
+      this.el.panelCamera.css({
+        height: 'calc(100% - 120px)'
+      });
+    });
+
+    this.el.btnClosePanelCamera.on('click', (e) => {
+      this.closeAllMainPanel();
+      this.el.panelMessagesContainer.show();
+    });
+
+    this.el.btnClosePanelDocumentPreview.on('click', (e) => {
+      this.closeAllMainPanel();
+      this.el.panelMessagesContainer.show();
+    });
+
+    this.el.btnTakePicture.on('click', (e) => {
+      console.log('Tirar foto');
+    });
+
+    this.el.btnSendDocument.on('click', (e) => {
+      console.log('Enviar Documentos');
     });
 
     this.el.btnAttachDocument.on('click', (e) => {
-      this.el.menuAttach.addClass('open');
+      this.closeAllMainPanel();
+      this.el.panelDocumentPreview.addClass('open');
+      this.el.panelDocumentPreview.css({
+        height: 'calc(100% - 120px)'
+      });
     });
 
     this.el.btnAttachContact.on('click', (e) => {
-      this.el.menuAttach.addClass('open');
+      this.el.modalContacts.show();
+    });
+
+    this.el.btnCloseModalContacts.on('click', (e) => {
+      this.el.modalContacts.hide();
+    });
+
+    this.el.btnSendMicrophone.on('click', (e) => {
+      this.el.recordMicrophone.show();
+      this.el.btnSendMicrophone.hide();
+      this.startRecordMicrophoneTime();
+    });
+
+    this.el.btnCancelMicrophone.on('click', (e) => {
+      this.closeRecordMicrophone();
+    });
+
+    this.el.btnFinishMicrophone.on('click', (e) => {
+      console.log('Enviar Audio');
+      this.closeRecordMicrophone();
     });
   } //End initEvents
+
+  startRecordMicrophoneTime() {
+    let start = Date.now();
+    this._recordMicrophoneInterval = setInterval(() => {
+      this.el.recordMicrophoneTimer.innerHTML = Date.now() - start;
+    }, 100);
+  }
+
+  closeRecordMicrophone() {
+    this.el.recordMicrophone.hide();
+    this.el.btnSendMicrophone.show();
+    clearInterval(this._recordMicrophoneInterval);
+  }
+
+  closeAllMainPanel() {
+    this.el.panelMessagesContainer.hide();
+    this.el.panelDocumentPreview.removeClass('open');
+    this.el.panelCamera.removeClass('open');
+  }
 
   closeMenuAttach(e) {
     document.removeEventListener('click', this.closeMenuAttach);
     this.el.menuAttach.removeClass('open');
+  }
+
+  closeMenuAttachDocument(e) {
+    document.removeEventListener('click', this.closeMenuAttachDocument);
+    this.el.btnAttachDocument.removeClass('open');
   }
 
   closeAllLeftPanel() {
