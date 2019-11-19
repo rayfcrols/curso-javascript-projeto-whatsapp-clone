@@ -144,13 +144,8 @@ class WhatsAppController {
 
     this.el.inputPhoto.on('change', (e) => {
       console.log(this.el.inputPhoto.files);
-<<<<<<< HEAD
-      [...this.el.inputPhoto.files].forEach(file =>{
-        console.log('Gitpod',file);
-=======
       [...this.el.inputPhoto.files].forEach((file) => {
-        console.log(file);
->>>>>>> 5b8ff257258b730e8ffcc99eb6ff763ef293f8c3
+        console.log('Gitpod', file);
       });
     });
 
