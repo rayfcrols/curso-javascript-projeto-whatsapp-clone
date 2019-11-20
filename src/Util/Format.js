@@ -11,16 +11,13 @@ class Format {
     const seconds = parseInt((duration / 1000) % 60, 10);
     const minutes = parseInt((duration / (1000 * 60)) % 60, 10);
     const hours = parseInt((duration / (1000 * 60 * 60)) % 24, 10);
-    [];
+    // [];
     if (hours > 0) {
-      return `${hours} horas, ${minutes} minutos e ${seconds} segundos`;
+      return `${hours}:${minutes
+        .toString()
+        .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    } else {
+      return `${minutes}:${seconds.toString().padStart(2, '0')}`;
     }
-    if (minutes > 0) {
-      return `${minutes} minutos e ${seconds} segundos`;
-    }
-    if (seconds > 0) {
-      return `${seconds} segundos`;
-    }
-    return '';
   }
 }
