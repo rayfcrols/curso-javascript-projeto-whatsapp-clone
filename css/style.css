@@ -16136,3 +16136,20 @@ html[dir=rtl] ._2ICcy:after{
 #main {
     display:none;
 }
+
+._2oKVP {
+    display: flex;
+    justify-content: center;
+}
+
+#video-camera {
+    height: 100%;
+    width: auto;
+    text-align: center;
+}
+
+#picture-camera {
+    height: 100%;
+    width: auto;
+    text-align: center;
+}
