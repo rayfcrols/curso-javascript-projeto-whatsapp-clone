@@ -18,7 +18,7 @@ export class DocumentPreviewController {
           reader.onerror = (e) => {
             f(e);
           };
-          reader.readAsDataURL(file);
+          reader.readAsDataURL(this._file);
           break;
         case 'video/mp4':
         case 'video/x-msvideo':
@@ -29,11 +29,13 @@ export class DocumentPreviewController {
           break;
         case 'application/pdf':
         case 'application/x-pkcs12':
+          console.log('img');
           break;
         case 'audio/ogg':
         case 'audio/mp3':
         case 'audio/mpeg':
         case 'audio/x-wav':
+          console.log('img');
           break;
         default:
           f();
