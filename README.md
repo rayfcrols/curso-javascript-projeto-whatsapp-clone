@@ -20,3 +20,5 @@ Lista de recursos usados em aula para este projeto
 | Cloud Storage | https://firebase.google.com/docs/storage/?authuser=0 |
 | PDF.js | https://mozilla.github.io/pdf.js/ |
 | MediaDevices.getUserMedia() | https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia |
+
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
